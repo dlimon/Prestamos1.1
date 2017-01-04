@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+<script type="text/javascript" src="js/daterangepicker.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/myJavascript.js"></script>
+</head>
+<body id="background">
+<div class="container-fluid">
+<div >
+ <div  class="col-xs-10 col-sm-6 col-md-6 col-lg-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-4">
+ <div id='login'></div>
+ <div id='login2'>
+	 <div id="paddingLogotipo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	 	<img src="images/logotipo.png" alt="">
+	 </div>
+   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6  col-sm-offset-3 col-md-offset-3 col-lg-offset-3"><h2>Control Activos</h2></div>
+	<div id='formLogin' >
+	    <label class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">Usuario</label>
+		<input class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" type="text" name="user" id="user">
+		<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Contraseña</label>
+		<input id='textLogin' class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" type="password" name="password">
+		<button id="btnVerificar"  class="col-xs-8 col-sm-6 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-4"  onclick="verificar();">Ingresar</button>
+	</div>
+	</div>
+ </div>
+</div>
+</div>
+<!--Ventana del area de sistemas-->
+<div id="ventanaSistemas" class="col-md-10 col-md-offset-1">
+	<div class="container-fluid" id="colorNavegador"><h2 id = "navegadorTitulo" class="col-md-3 izquierdaFlotar">Area Sistemas</h2>
+	<h4 onclick="prestamos();" class="col-md-2 izquierdaFlotar navegadorAcomodo">Prestamos</h4>
+	<h4 onclick="agregarArticulos();" class="col-md-3 izquierdaFlotar navegadorAcomodo">Carta responsiva de activo fijo</h4>
+	<h4 onclick="AdministrarUsuarios();" class="col-md-2 izquierdaFlotar  navegadorAcomodo">Administrar usuarios</h4>
+	<h4 class="col-md-2  navegadorAcomodo" onclick="cerrarSistemas();">cerrar sesion</h4></div>
+	<!--Area prestamos-->
+	<div id="areaPrestamos" class="container-fluid col-md-12" ><h3>Tabla de prestamos</h3></div>
+	<!--Area agregar articulos-->
+	<div id="areaAgregarArticulos" style="display: none;" class="container-fluid col-md-12">
+		<h3 class="col-md-12" >CARTA RESPONSIVA DE ACTIVO FIJO</h3>
+		<div class="col-md-12">
+			<table class=" table-bordered">
+			 <thead>
+				 <tr>
+				 	<td class="col-md-8"><label for="">INFORMACIÓN GENERAL DEL USUARIO</label></td>
+					<td class="col-md-4"><label for="">TIPO DE MOVIMIENTO</label></td>
+				 </tr>
+			 </thead>
+			 <tbody>
+				<tr>
+					<td class="col-md-8">
+						<div class="col-md-12">
+							<label for="">Departamento:</label>
+							<input type="text" name="" value="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Nombre completo:</label>
+							<input type="text" name="" value="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Nómina:</label>
+							<input type="text" name="" value="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Dirctor del departamento:</label>
+							<input type="text" name="" value="">
+						</div>
+					</td>
+					<td class="col-md-4">
+						<div class="col-md-12">
+								<label for="">Asignación </label><input type="checkbox" name="" value="">
+						</div>
+						<div class="col-md-12">
+								<label for="">Re-asignación </label><input type="checkbox" name="" value="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Préstamo temporal </label><input type="checkbox" name="" value="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Devolución </label><input type="checkbox" name="" value="">
+						</div>
+					</td>
+				</tr>
+			 </tbody>
+			 </table>
+		</div>
+	</div>
+	<!--Area Administrar usuarios-->
+		<div id="areaAdministrarUsuario" style="display: none;" class="container-fluid col-md-12">
+		<div>
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				<h3 class="col-md-5" >Crear usuarios</h3>
+				<label  class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12">Nombre de usuario</label>
+				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" name="user" value="">
+				<label class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" >contraseña</label>
+				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" name="password" value="">
+				<label class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" >Confirmar Contraseña</label>
+				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" name="confPassword" value="">
+				<label class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12">Privilegios</label>
+				<select class="form-control col-md-5 centrar" name="privilegio">
+				 <option value="TI">TI</option>
+				 <option value="usuario">Usuario</option>
+				</select>
+				<button id="btnAgregarUsuario" class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="button" name="button">Agregar Usuario</button>
+			</div>
+			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+					<hr id="separadorUsuarios">
+				<h3 class="col-md-7" >Usuarios</h3>
+				<div id="tablaUsurios" class="col-md-12">
+					<table class=" table-bordered">
+ 					 <thead id="headTablaUsuarios">
+ 					 </thead>
+ 					 <tbody id="bodyTablaUsuarios">
+ 					 </tbody>
+ 					 </table>
+				</div>
+
+			</div>
+		</div>
+		<div></div>
+	</div>
+</div>
+<!--Ventana del area de sistemas-->
+
+</body>
+</html>
