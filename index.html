@@ -100,17 +100,17 @@
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 				<h3 class="col-md-5" >Crear usuarios</h3>
 				<label  class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12">Nombre de usuario</label>
-				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" name="user" value="">
+				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" id="userInsert" maxlength="12" type="text" name="user" value="">
 				<label class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" >contraseña</label>
-				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" name="password" value="">
+				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" id="passwordInsert" type="password" name="password" value="">
 				<label class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" >Confirmar Contraseña</label>
-				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" name="confPassword" value="">
+				<input class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" id="confPassword" type="password" name="confPassword" value="">
 				<label class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12">Privilegios</label>
-				<select class="form-control col-md-5 centrar" name="privilegio">
+				<select class="form-control col-md-5 centrar" id="privilegio" name="privilegio" id="privilegio">
 				 <option value="TI">TI</option>
 				 <option value="usuario">Usuario</option>
 				</select>
-				<button id="btnAgregarUsuario" class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="button" name="button">Agregar Usuario</button>
+				<button onclick="insertarUsuario()" id="btnAgregarUsuario" class="centrar col-xs-12 col-sm-12 col-md-12 col-lg-12" type="button" name="button">Agregar Usuario</button>
 			</div>
 			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 					<hr id="separadorUsuarios">

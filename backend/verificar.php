@@ -9,7 +9,7 @@ $verificar = 0;
 if( $mysqli->connect_errno )
 {
 echo $verificar;
-}          
+}
 if($user == $reg[1])
 {
 	if( password_verify($password,"{$reg[2]}"))

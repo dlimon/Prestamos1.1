@@ -1,3 +1,34 @@
+function insertarUsuario(){
+
+  var user = document.getElementById("userInsert").value;
+  var password = document.getElementById("passwordInsert").value;
+  var passconf = document.getElementById("confPassword").value;
+  var privilegio = document.getElementById("privilegio").value;
+  var letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+  if(password == passconf){
+
+    //var userString = String(user);
+    var patron = /^[a-zA-Z]*$/;
+    if(!user.search(patron)){
+      alert(user + "son puras letras");
+      $.ajax({
+       url: "backend/insertUsuario.php?user="+user+"&password="+password+"&privilegio="+privilegio,
+       data: user,
+      success: function (response) {
+       alert(response);
+      }
+    });
+     }
+     else {
+       alert("el nombre de usuario no deve contener caracteres especiales como (*,$,-,%)");
+     }
+
+  }
+  else {
+    alert("las contraseñas no concuerdan");
+  }
+}
+
 function mostrarUsuarios(){
           $('#headTablaUsuarios').html('');
           $('#bodyTablaUsuarios').html('');
