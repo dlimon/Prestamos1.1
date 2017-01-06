@@ -1,3 +1,57 @@
+function cerrarSesion(){
+  elem = document.getElementById("login");
+  login = document.getElementById('login2');
+  var menu = document.getElementById("menu");
+  var elem2 = document.getElementById("ventanaSistemas");
+ var opacidad = 1;
+ var altura = 0;
+ var margen =0;
+ var id = setInterval(frame,30);
+ function frame(){
+  login.style.display = "block";
+  elem.style.display = "block";
+  if(altura == -50){
+  menu.style.display = "none";
+  elem2.style.display = "none";
+  elem2.style.marginTop = "0%";
+  elem2.style.opacity = 1;
+     clearInterval(id);
+  }
+  else
+  {
+  opacidad = opacidad-0.014;
+  altura = altura - 0.5;
+  margen = margen - 1.3;
+  menu.style.marginTop = margen + '%';
+  elem2.style.marginTop = altura + "%";
+  elem2.style.opacity = opacidad ;
+  }
+ }
+}
+
+
+function abrirVentanaSistemas(){
+  var menu = document.getElementById("menu");
+ var opacidad = 1;
+ var altura = 0;
+ var margen =0;
+ var id = setInterval(frame,30);
+ function frame(){
+  if(altura == -50){
+  menu.style.display = "none";
+     clearInterval(id);
+  }
+  else
+  {
+  opacidad = opacidad-0.014;
+  altura = altura - 0.5;
+  margen = margen - 1.3;
+  menu.style.marginTop = margen + '%';
+  }
+ }
+  document.getElementById("ventanaSistemas").style.display="block";
+}
+
 function insertarUsuario(){
 
   var user = document.getElementById("userInsert").value;
@@ -5,27 +59,34 @@ function insertarUsuario(){
   var passconf = document.getElementById("confPassword").value;
   var privilegio = document.getElementById("privilegio").value;
   var letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-  if(password == passconf){
-
-    //var userString = String(user);
-    var patron = /^[a-zA-Z]*$/;
-    if(!user.search(patron)){
-      alert(user + "son puras letras");
-      $.ajax({
-       url: "backend/insertUsuario.php?user="+user+"&password="+password+"&privilegio="+privilegio,
-       data: user,
-      success: function (response) {
-       alert(response);
-      }
-    });
-     }
-     else {
-       alert("el nombre de usuario no deve contener caracteres especiales como (*,$,-,%)");
-     }
-
+  if(user == '' || password == '' || passconf == ''){
+    alert("campos vacios, no debe ver campos vacios");
   }
   else {
-    alert("las contraseñas no concuerdan");
+    if(password == passconf){
+
+      //var userString = String(user);
+      var patron = /^[a-zA-Z]*$/;
+      if(!user.search(patron)){
+        document.getElementById("btnAgregarUsuario").value = "Procesando petición...";
+        $.ajax({
+         url: "backend/insertUsuario.php?user="+user+"&password="+password+"&privilegio="+privilegio,
+         data: user,
+        success: function (response) {
+         alert(response);
+         document.getElementById("btnAgregarUsuario").value = "Agregar Usuarios";
+         mostrarUsuarios();
+        }
+      });
+       }
+       else {
+         alert("el nombre de usuario no deve contener caracteres especiales como (*,$,-,%)");
+       }
+
+    }
+    else {
+      alert("las contraseñas no concuerdan");
+    }
   }
 }
 
@@ -102,7 +163,7 @@ function verificar(){
        {
        	 		document.getElementById("btnVerificar").innerHTML="ingresar";
  		document.getElementById("btnVerificar").disabled = false;
-          document.getElementById("ventanaSistemas").style.display="block";
+          //document.getElementById("ventanaSistemas").style.display="block";
  var elem = document.getElementById("login");
   var login = document.getElementById('login2');
  var top = 19;
@@ -116,14 +177,16 @@ function verificar(){
  		login.style.display = "none";
  		login.style.marginTop = 0 + '%';
  		elem.style.display = "none";
- 	 elem.style.paddingTop = "19%";
+ 	 elem.style.paddingTop = "20%";
  	elem.style.height = "100%";
+  menu.style.marginTop = '0%';
      clearInterval(id);
+     document.getElementById("menu").style.display="block";
  	}
  	else
  	{
  	top--;
- 	altura= altura-1;
+ 	altura= altura-2;
  	margen = margen - 1;
  	login.style.marginTop = margen + '%';
  	elem.style.paddingTop = top + "%";
@@ -145,24 +208,26 @@ function verificar(){
 
 
 
-function cerrarSistemas(){
-	 var elem = document.getElementById("login");
-	 var login = document.getElementById('login2');
+function cerrarPrestamos(){
+	elem = document.getElementById("login");
+	login = document.getElementById('login2');
+  var menu = document.getElementById("menu");
 	var elem2 = document.getElementById("ventanaSistemas");
  var opacidad = 1;
  var altura = 0;
+ var margen =0;
  var id = setInterval(frame,30);
  function frame(){
- 	login.style.display = "block";
- 	elem.style.display = "block";
  	if(altura == -50){
- 		elem2.style.display = "none";
+  menu.style.marginTop = "0%";
+ 	elem2.style.display = "none";
  	elem2.style.marginTop = "0%";
  	elem2.style.opacity = 1;
      clearInterval(id);
  	}
  	else
  	{
+    menu.style.display = "block";
  	opacidad = opacidad-0.014;
  	altura = altura - 0.5;
  	elem2.style.marginTop = altura + "%";

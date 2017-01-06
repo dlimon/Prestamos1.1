@@ -23,8 +23,63 @@ background-repeat: repeat-x;
 	-webkit-animation-delay: 0s;
 }
 
+/*.txtDetalles{
+	border: none;
+width: 75%;
+}*/
+
+.txtDetalles2{
+	border: none;
+width: 100%;
+}
+
+#tablaDetalles{
+	width: 100%;
+	margin-top: 1.5%;
+}
+
+#tablaDetalles2{
+	width: 100%;
+}
+
+#selectDirector{
+	width: 60%;
+}
+
+#lblDrirector{
+	float: left;
+	padding-top: 1%;
+padding-right: 1%;
+}
+
+.inputCarta{
+	margin-left: 5% !important;
+}
+
+
+.cajaEstilo{
+	border-style: none;
+border-bottom: black;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+}
+
+#input1Carta{
+	width: 70%;
+}
+#input2Carta{
+	width: 67%;
+}
+#input3Carta{
+	width: 76%;
+
+}
+#input4Carta{
+	width: 61%;
+}
+
 #campoInfActivo{
-	
+
 }
 
 #paddingLogotipo{
@@ -93,6 +148,21 @@ padding-right: 3%;*/
 }
 
 @media screen and (max-width: 768px) {
+	#menu{
+		display: none;
+text-align: center;
+opacity: 0.7;
+color: black;
+background-color: #66ff66;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+	height: 100%;
+width: 75.8%;
+margin-left: 0%;
+}
 
   #login{
 text-align: center;
@@ -126,6 +196,22 @@ margin-left: 0%;
 
 @media screen and (min-width: 769px) {
 
+	#menu{
+		display: none;
+text-align: center;
+opacity: 0.7;
+color: black;
+background-color: #66ff66;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+	height: 100%;
+width: 44.6%;
+margin-left: 0%;
+}
+
   #login{
 text-align: center;
 opacity: 0.7;
@@ -157,6 +243,22 @@ margin-left: 0%;
 }
 
 @media screen and (min-width: 970px) {
+
+	#menu{
+		display: none;
+text-align: center;
+opacity: 0.7;
+color: black;
+background-color: #66ff66;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+	height: 100%;
+width:  44.3%;
+margin-left: 0%;
+}
 
   #login{
 text-align: center;
@@ -190,6 +292,22 @@ margin-left: 0%;
 
 @media screen and (min-width: 1170px) {
 
+	#menu{
+		display: none;
+text-align: center;
+opacity: 0.7;
+color: black;
+background-color: #66ff66;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+	height: 100%;
+width: 30.7%;
+margin-left: 0%;
+}
+
   #login{
 text-align: center;
 opacity: 0.7;
@@ -220,6 +338,50 @@ margin-left: 0%;
 
 }
 
+#cuerpoMenu
+{
+	background: white;
+	border-bottom: black;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-top-color: black;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-radius: 3px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: black;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: black;
+	font-size: 23px;
+}
+
+@keyframes pintarMenu{
+	from{
+		margin-top: -56%;
+		padding-top: 0%;
+      height: 0;
+	}
+	to{
+		margin-top: 0%;
+		padding-top: 15%;
+		height: 100%;
+
+	}
+}
+
+@keyframes aparecer{
+	from{
+		opacity: 0;
+		padding-top: 30%;
+	}
+	to{
+	opacity: 1;
+	padding-top: 0%;
+
+	}
+}
 
 @keyframes pintar{
 	from{

@@ -19,6 +19,13 @@
 <div >
  <div  class="col-xs-10 col-sm-6 col-md-6 col-lg-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-4">
  <div id='login'></div>
+ <div id='menu'>
+	 <h3 class="col-md-12">MENU</h3>
+	 <div>
+		 <button id="cuerpoMenu" onclick="abrirVentanaSistemas();" class="col-md-10 col-md-offset-1" type="button" name="button">Prestamos</button>
+		 <button id="cuerpoMenu" onclick="cerrarSesion();" class="col-md-10 col-md-offset-1" type="button" name="button">Cerrar sesión</button>
+	 </div>
+ </div>
  <div id='login2'>
 	 <div id="paddingLogotipo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	 	<img src="images/logotipo.png" alt="">
@@ -41,7 +48,7 @@
 	<h4 onclick="prestamos();" class="col-md-2 izquierdaFlotar navegadorAcomodo">Prestamos</h4>
 	<h4 onclick="agregarArticulos();" class="col-md-3 izquierdaFlotar navegadorAcomodo">Carta responsiva de activo fijo</h4>
 	<h4 onclick="AdministrarUsuarios();" class="col-md-2 izquierdaFlotar  navegadorAcomodo">Administrar usuarios</h4>
-	<h4 class="col-md-2  navegadorAcomodo" onclick="cerrarSistemas();">cerrar sesion</h4></div>
+	<h4 class="col-md-2  navegadorAcomodo" onclick="cerrarPrestamos();">cerrar prestamos</h4></div>
 	<!--Area prestamos-->
 	<div id="areaPrestamos" class="container-fluid col-md-12" ><h3>Tabla de prestamos</h3></div>
 	<!--Area agregar articulos-->
@@ -60,38 +67,80 @@
 					<td class="col-md-8">
 						<div class="col-md-12">
 							<label for="">Departamento:</label>
-							<input type="text" name="" value="">
+							<input id='input1Carta' class="cajaEstilo" type="text" name="" value="">
 						</div>
-						<div class="col-md-12">
+						<div  class="col-md-12">
 							<label for="">Nombre completo:</label>
-							<input type="text" name="" value="">
+							<input id='input2Carta' class="cajaEstilo" type="text" name="" value="">
 						</div>
 						<div class="col-md-12">
 							<label for="">Nómina:</label>
-							<input type="text" name="" value="">
+							<input id='input3Carta' class="cajaEstilo" type="text" name="" value="">
 						</div>
 						<div class="col-md-12">
-							<label for="">Dirctor del departamento:</label>
-							<input type="text" name="" value="">
+							<label id="lblDrirector" for="">Director del departamento:</label>
+							<select class="form-control centrar" id="selectDirector" name="DirectorDelDepartamento">
+							 <option value="ServiciosDeApoyo">Servicios de apoyo</option>
+							 <option value="Mercadotecnia">Mercadotecnia</option>
+							 <option value="Vinculacion">vinculación</option>
+							 <option value="DireccionGeneral">Direccion general</option>
+							 <option value="Preparatoria">Preparatoria</option>
+							 <option value="Profecional">Profecional</option>
+							 <option value="Ejecutivo">Ejecutivo</option>
+							 <option value="Maestria">Maestria</option>
+							</select>
 						</div>
 					</td>
 					<td class="col-md-4">
 						<div class="col-md-12">
-								<label for="">Asignación </label><input type="checkbox" name="" value="">
+								<label for="">Asignación </label><input class="inputCarta" type="checkbox" name="" value="">
 						</div>
 						<div class="col-md-12">
-								<label for="">Re-asignación </label><input type="checkbox" name="" value="">
+								<label for="">Re-asignación </label><input class="inputCarta" type="checkbox" name="" value="">
 						</div>
 						<div class="col-md-12">
-							<label for="">Préstamo temporal </label><input type="checkbox" name="" value="">
+							<label for="">Préstamo temporal </label><input class="inputCarta" type="checkbox" name="" value="">
 						</div>
 						<div class="col-md-12">
-							<label for="">Devolución </label><input type="checkbox" name="" value="">
+							<label for="">Devolución </label><input class="inputCarta" type="checkbox" name="" value="">
 						</div>
 					</td>
 				</tr>
 			 </tbody>
 			 </table>
+		</div>
+		<div class="col-md-12">
+			<table id="tablaDetalles" class="table-bordered">
+				<tbody>
+					<tr>
+						<td class="col-md-8"><label for="">DETALLES DEL ACTIVO FIJO</label></td>
+						<td  class="col-md-1"><label for="">N'Activo</label></td>
+						<td  class="col-md-3"><input class="txtDetalles2" type="text" name="" value=""></td>
+					</tr>
+					</tbody>
+					</table>
+					<table id="tablaDetalles2" class="table-bordered">
+						<tbody>
+						<tr>
+							<td class="col-md-2"><label for="">Tipo:</label></td>
+							<td class="col-md-10"><input class="txtDetalles2" type="text" name="" value=""></td>
+						</tr>
+            </tbody>
+					</table>
+					<table id="tablaDetalles2" class="table-bordered">
+		      <tbody>
+					<tr>
+						<td class="col-md-4 "><label for="">Marca:</label><input class="txtDetalles" type="text" name="" value=""></td>
+						<td class="col-md-4 "><label for="">Modelo:</label><input class="txtDetalles" type="text" name="" value=""></td>
+						<td class="col-md-4 "><label for="">Número de serie:</label><input class="txtDetalles" type="text" name="" value=""></td>
+					</tr>
+					<tr>
+						<td class="col-md-4 centrar"><button  type="button" name="button">Imprimir formato en blanco</button></td>
+						<td class="col-md-4 centrar"><button  type="button" name="button">Guardar imagen documento fisico</button></td>
+						<td class="col-md-4 centrar" ><button type="button" name="button">Enviar Información</button></td>
+					</tr>
+					</tbody>
+						</table>
 		</div>
 	</div>
 	<!--Area Administrar usuarios-->
