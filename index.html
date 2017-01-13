@@ -9,6 +9,7 @@
 <meta http-equiv='cache-control' content='no-cache'>
 <meta http-equiv='expires' content='0'>
 <meta http-equiv='pragma' content='no-cache'>
+<script type="text/javascript" src="multiuploadPrestamos.js"></script>
 <script type="text/javascript" src="js/daterangepicker.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -50,10 +51,22 @@
 	<h4 onclick="AdministrarUsuarios();" class="col-md-2 izquierdaFlotar  navegadorAcomodo">Administrar usuarios</h4>
 	<h4 class="col-md-2  navegadorAcomodo" onclick="cerrarPrestamos();">cerrar prestamos</h4></div>
 	<!--Area prestamos-->
-	<div id="areaPrestamos" class="container-fluid col-md-12" ><h3>Tabla de prestamos</h3></div>
+	<div id="areaPrestamos" class="container-fluid col-md-12" >
+		<h3>Tabla de prestamos</h3>
+		<div id="tablaUsurios" class="col-md-12">
+			<table class=" table-bordered">
+			 <thead id="headTablaPrestamos">
+			 </thead>
+			 <tbody id="bodyTablaPrestamos">
+			 </tbody>
+			 </table>
+		</div>
+	</div>
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	<!--Area agregar articulos-->
 	<div id="areaAgregarArticulos" style="display: none;" class="container-fluid col-md-12">
 		<h3 class="col-md-12" >CARTA RESPONSIVA DE ACTIVO FIJO</h3>
+		<form class="" id="idForm" name="cartaActivoFijo" action="backend/subirActivoFijo.php"  method="post" enctype="multipart/form-data" >
 		<div class="col-md-12">
 			<table class=" table-bordered">
 			 <thead>
@@ -67,15 +80,15 @@
 					<td class="col-md-8">
 						<div class="col-md-12">
 							<label for="">Departamento:</label>
-							<input id='input1Carta' class="cajaEstilo" type="text" name="" value="">
+							<input id='input1Carta' class="cajaEstilo" type="text" name="Departamento" value="">
 						</div>
 						<div  class="col-md-12">
 							<label for="">Nombre completo:</label>
-							<input id='input2Carta' class="cajaEstilo" type="text" name="" value="">
+							<input id='input2Carta' class="cajaEstilo" type="text" name="nombreCompleto" value="">
 						</div>
 						<div class="col-md-12">
-							<label for="">Nómina:</label>
-							<input id='input3Carta' class="cajaEstilo" type="text" name="" value="">
+							<label for="" id="numeroNomina">Nómina:</label>
+							<input id='input3Carta' class="cajaEstilo" type="text" name="nomina" value="">
 						</div>
 						<div class="col-md-12">
 							<label id="lblDrirector" for="">Director del departamento:</label>
@@ -93,16 +106,16 @@
 					</td>
 					<td class="col-md-4">
 						<div class="col-md-12">
-								<label for="">Asignación </label><input class="inputCarta" type="checkbox" name="" value="">
+								<label for="">Asignación </label><input id="movimiento1" onclick='movimiento12();' class="inputCarta" type="checkbox" name="asignacion" value="">
 						</div>
 						<div class="col-md-12">
-								<label for="">Re-asignación </label><input class="inputCarta" type="checkbox" name="" value="">
+								<label for="">Re-asignación </label><input id="movimiento2" onclick='movimiento22();' class="inputCarta" type="checkbox" name="reAsignacion" value="">
 						</div>
 						<div class="col-md-12">
-							<label for="">Préstamo temporal </label><input class="inputCarta" type="checkbox" name="" value="">
+							<label for="">Préstamo temporal </label><input id="movimiento3" onclick='movimiento32();' class="inputCarta" type="checkbox" name="pretsamoTemporal" value="">
 						</div>
 						<div class="col-md-12">
-							<label for="">Devolución </label><input class="inputCarta" type="checkbox" name="" value="">
+							<label for="">Devolución </label><input id="movimiento4" onclick='movimiento42();' class="inputCarta" type="checkbox" name="devolucion" value="">
 						</div>
 					</td>
 				</tr>
@@ -115,34 +128,38 @@
 					<tr>
 						<td class="col-md-8"><label for="">DETALLES DEL ACTIVO FIJO</label></td>
 						<td  class="col-md-1"><label for="">N'Activo</label></td>
-						<td  class="col-md-3"><input class="txtDetalles2" type="text" name="" value=""></td>
+						<td  class="col-md-3"><input class="txtDetalles2" type="text" name="nActivo" value=""></td>
 					</tr>
 					</tbody>
 					</table>
-					<table id="tablaDetalles2" class="table-bordered">
+				<!-- 	<table id="tablaDetalles2" class="table-bordered">
 						<tbody>
 						<tr>
 							<td class="col-md-2"><label for="">Tipo:</label></td>
 							<td class="col-md-10"><input class="txtDetalles2" type="text" name="" value=""></td>
 						</tr>
             </tbody>
-					</table>
+					</table>-->
 					<table id="tablaDetalles2" class="table-bordered">
 		      <tbody>
 					<tr>
-						<td class="col-md-4 "><label for="">Marca:</label><input class="txtDetalles" type="text" name="" value=""></td>
-						<td class="col-md-4 "><label for="">Modelo:</label><input class="txtDetalles" type="text" name="" value=""></td>
-						<td class="col-md-4 "><label for="">Número de serie:</label><input class="txtDetalles" type="text" name="" value=""></td>
+						<td class="col-md-4 "><label id="lblMarca" for="">Marca:</label><input id="iptMarca" class="txtSinBordes txtDetalles" type="text" name="marca" value=""></td>
+						<td class="col-md-4 "><label id="lblModelo" for="">Modelo:</label><input id="iptModelo" class="txtSinBordes txtDetalles" type="text" name="modelo" value=""></td>
+						<td class="col-md-4 "><label id="lblNumeroS" for="">Número de serie:</label><input id="iptNumeroS" class="txtSinBordes txtDetalles" type="text" name="numeroDeSerie" value=""></td>
 					</tr>
 					<tr>
-						<td class="col-md-4 centrar"><button  type="button" name="button">Imprimir formato en blanco</button></td>
-						<td class="col-md-4 centrar"><button  type="button" name="button">Guardar imagen documento fisico</button></td>
-						<td class="col-md-4 centrar" ><button type="button" name="button">Enviar Información</button></td>
+						<td class="col-md-4 centrar"><a href="pdf/formatoEnBlanco/cartaResponsivaDeActivoFijo.pdf" target="_blank"><button  type="button" name="button">formato en blanco</button></a></td>
+						<td class="col-md-4 centrar">
+                 <input id="uploadImage" type="file" accept="image/*" name="imageActivoFijo" />
+						 </td>
+						<td class="col-md-4 centrar" ><button onclick="subirActivoFijo();" type="submit" name="button" >Enviar Información</button></td>
 					</tr>
 					</tbody>
 						</table>
 		</div>
+		</form>
 	</div>
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	<!--Area Administrar usuarios-->
 		<div id="areaAdministrarUsuario" style="display: none;" class="container-fluid col-md-12">
 		<div>

@@ -1,3 +1,56 @@
+function movimiento12(){
+  document.getElementById('movimiento1').checked = true;
+  document.getElementById('movimiento2').checked = false;
+  document.getElementById('movimiento3').checked = false;
+  document.getElementById('movimiento4').checked = false;
+}
+
+function movimiento22(){
+  document.getElementById('movimiento1').checked = false;
+  document.getElementById('movimiento2').checked = true;
+  document.getElementById('movimiento3').checked = false;
+  document.getElementById('movimiento4').checked = false;
+}
+
+function movimiento32(){
+  document.getElementById('movimiento1').checked = false;
+  document.getElementById('movimiento2').checked = false;
+  document.getElementById('movimiento3').checked = true;
+  document.getElementById('movimiento4').checked = false;
+}
+
+function movimiento42(){
+  document.getElementById('movimiento1').checked = false;
+  document.getElementById('movimiento2').checked = false;
+  document.getElementById('movimiento3').checked = false;
+  document.getElementById('movimiento4').checked = true;
+}
+
+//se sube la carta de activo fijo
+function subirActivoFijo(){
+
+
+$("#idForm").submit(function(e) {
+    e.preventDefault();
+    var url = "backend/subirActivoFijo.php";
+    var formData = new FormData($(this)[0]);
+   $.ajax({
+           type: "POST",
+           url: url,
+           data: formData,
+           contentType: false,
+           processData: false,
+           success: function(data)
+           {
+               alert(data);
+           }
+         });
+         document.getElementById("#idForm").reset();
+  return false;
+});
+}
+
+
 function cerrarSesion(){
   elem = document.getElementById("login");
   login = document.getElementById('login2');
@@ -88,6 +141,50 @@ function insertarUsuario(){
       alert("las contraseñas no concuerdan");
     }
   }
+}
+mostrarPrestamos();
+function mostrarPrestamos(){
+          $('#headTablaPrestamos').html('');
+          $('#bodyTablaPrestamos').html('');
+        var i=0;
+          $('#headTablaPrestamos').append(
+            '<tr>'+
+            '<th class="col-md-2 centrar">Nomina</th>'+
+            '<th class="col-md-2 centrar">Departamento</th>'+
+            '<th class="col-md-2 centrar">Nombre</th>'+
+            '<th class="col-md-2 centrar">Tipo de movimiento</th>'+
+            '<th class="col-md-2 centrar">Numero de Activo</th>'+
+            '<th class="col-md-1 centrar">Drirector de Departamento</th>'+
+            '<th class="col-md-1 centrar">Modelo</th>'+
+            '<th class="col-md-1 centrar">Marca</th>'+
+            '<th class="col-md-1 centrar">Numero de serie</th>'+
+            '</tr>'
+          );
+          while (i<10) {
+            $.ajax({
+            url: 'backend/tablaUsuarios.php?i='+i,
+            success: function(arreglo)
+              {
+                var prestamo = $.parseJSON(arreglo);
+                $('#bodyTablaUsuarios').append(
+                  '<tr>'+
+                  '<td class="col-md-2 centrar">'+prestamo[0]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[1]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[2]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[3]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[4]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[5]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[6]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[7]+'</td>'+
+                  '<td class="col-md-2 centrar">'+prestamo[8]+'</td>'+
+                  '</tr>');
+              }
+            });
+               i++;
+          }
+
+
+
 }
 
 function mostrarUsuarios(){

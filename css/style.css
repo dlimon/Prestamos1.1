@@ -23,6 +23,34 @@ background-repeat: repeat-x;
 	-webkit-animation-delay: 0s;
 }
 
+#lblMarca{
+	width: 15%;
+}
+
+#iptMarca{
+	width: 85%;
+}
+
+#lblModelo{
+	width: 15%;
+}
+
+#iptModelo{
+	width: 85%;
+}
+
+#lblNumeroS{
+	width: 32%;
+}
+
+#iptNumeroS{
+	width: 68%;
+}
+
+.txtSinBordes{
+	border: none;
+}
+
 /*.txtDetalles{
 	border: none;
 width: 75%;

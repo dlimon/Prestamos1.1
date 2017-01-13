@@ -24,4 +24,5 @@ if($user == $reg[1])
 else{
 echo $verificar;
 }
+mysqli_close($mysqli);
 ?>
