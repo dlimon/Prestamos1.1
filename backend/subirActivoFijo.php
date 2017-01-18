@@ -56,7 +56,7 @@ if($departamento == "" || $nombreCompleto == "" || $nomina == "" || $DirectorDel
       {
       move_uploaded_file($_FILES['imageActivoFijo']["tmp_name"], "../pdf/Registros/".$nomina.".jpg");
       $insert = "INSERT INTO `activo_fijo` (`Departamento`, `Nombre`, `Nomina`, `DirectorDepartemento`, `TipoMovimiento`, `NumeroActivo`, `Marca`, `Modelo`, `NumeroDeSerie`)
-       VALUES ('".$departamento."', '".$nombreCompleto."', '".$nomina."', '".$DirectorDelDepartamento."', '".$TipoMovimiento."', '".$nActivo."', '".$marca."', '".$modelo."', '".$numeroDeSerie."')";
+       VALUES ('".$DirectorDelDepartamento."', '".$nombreCompleto."', '".$nomina."', '".$departamento."', '".$TipoMovimiento."', '".$nActivo."', '".$marca."', '".$modelo."', '".$numeroDeSerie."')";
        $mysqli->query($insert);
        echo "CARTA RESPONSIVA DE ACTIVO FIJO \n A nombre de : ".$nombreCompleto." \n Con numero de nomina : ".$nomina." \n capturado con exito! ";
       }

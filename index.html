@@ -46,7 +46,7 @@
 <!--Ventana del area de sistemas-->
 <div id="ventanaSistemas" class="col-md-10 col-md-offset-1">
 	<div class="container-fluid" id="colorNavegador"><h2 id = "navegadorTitulo" class="col-md-3 izquierdaFlotar">Area Sistemas</h2>
-	<h4 onclick="prestamos();" class="col-md-2 izquierdaFlotar navegadorAcomodo">Prestamos</h4>
+	<h4 onclick="prestamos(); areaPrestamos();" class="col-md-2 izquierdaFlotar navegadorAcomodo">Prestamos</h4>
 	<h4 onclick="agregarArticulos();" class="col-md-3 izquierdaFlotar navegadorAcomodo">Carta responsiva de activo fijo</h4>
 	<h4 onclick="AdministrarUsuarios();" class="col-md-2 izquierdaFlotar  navegadorAcomodo">Administrar usuarios</h4>
 	<h4 class="col-md-2  navegadorAcomodo" onclick="cerrarPrestamos();">cerrar prestamos</h4></div>
@@ -79,7 +79,7 @@
 				<tr>
 					<td class="col-md-8">
 						<div class="col-md-12">
-							<label for="">Departamento:</label>
+							<label for="">Director del departamento:</label>
 							<input id='input1Carta' class="cajaEstilo" type="text" name="Departamento" value="">
 						</div>
 						<div  class="col-md-12">
@@ -91,7 +91,7 @@
 							<input id='input3Carta' class="cajaEstilo" type="text" name="nomina" value="">
 						</div>
 						<div class="col-md-12">
-							<label id="lblDrirector" for="">Director del departamento:</label>
+							<label id="lblDrirector" for="">Departamento:</label>
 							<select class="form-control centrar" id="selectDirector" name="DirectorDelDepartamento">
 							 <option value="ServiciosDeApoyo">Servicios de apoyo</option>
 							 <option value="Mercadotecnia">Mercadotecnia</option>
@@ -128,7 +128,7 @@
 					<tr>
 						<td class="col-md-8"><label for="">DETALLES DEL ACTIVO FIJO</label></td>
 						<td  class="col-md-1"><label for="">N'Activo</label></td>
-						<td  class="col-md-3"><input class="txtDetalles2" type="text" name="nActivo" value=""></td>
+						<td  class="col-md-3"><input  class="txtDetalles2" type="text" name="nActivo" value=""></td>
 					</tr>
 					</tbody>
 					</table>

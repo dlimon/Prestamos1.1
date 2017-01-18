@@ -43,6 +43,19 @@ $("#idForm").submit(function(e) {
            success: function(data)
            {
                alert(data);
+               document.getElementById("input1Carta").value = "";
+               document.getElementById("input2Carta").value = "";
+               document.getElementById("input3Carta").value = "";
+               document.getElementById("lblDrirector").value = "ServiciosDeApoyo";
+               document.getElementById("movimiento1").checked = false;
+               document.getElementById("movimiento2").checked = false;
+               document.getElementById("movimiento3").checked = false;
+               document.getElementById("movimiento4").checked = false;
+               document.getElementsByName("nActivo").value = "";
+               document.getElementById("iptMarca").value = "";
+               document.getElementById("iptModelo").value = "";
+               document.getElementById("iptNumeroS").value = "";
+               document.getElementById("uploadImage").value = "";
            }
          });
          document.getElementById("#idForm").reset();
@@ -59,8 +72,8 @@ function cerrarSesion(){
  var opacidad = 1;
  var altura = 0;
  var margen =0;
- var id = setInterval(frame,30);
- function frame(){
+ var id = setInterval(frame1,30);
+ function frame1(){
   login.style.display = "block";
   elem.style.display = "block";
   if(altura == -50){
@@ -84,7 +97,11 @@ function cerrarSesion(){
 
 
 function abrirVentanaSistemas(){
-  var menu = document.getElementById("menu");
+  areaPrestamos();
+  document.getElementById("areaAgregarArticulos").style.display = 'none';
+  document.getElementById("areaPrestamos").style.display = 'block';
+  document.getElementById("areaAdministrarUsuario").style.display = 'none';
+ var menu = document.getElementById("menu");
  var opacidad = 1;
  var altura = 0;
  var margen =0;
@@ -92,6 +109,7 @@ function abrirVentanaSistemas(){
  function frame(){
   if(altura == -50){
   menu.style.display = "none";
+  document.getElementById("ventanaSistemas").style.display="block";
      clearInterval(id);
   }
   else
@@ -102,7 +120,7 @@ function abrirVentanaSistemas(){
   menu.style.marginTop = margen + '%';
   }
  }
-  document.getElementById("ventanaSistemas").style.display="block";
+
 }
 
 function insertarUsuario(){
@@ -142,31 +160,65 @@ function insertarUsuario(){
     }
   }
 }
-mostrarPrestamos();
-function mostrarPrestamos(){
+
+function areaPrestamos(){
+  var maxPrestamo = 0;
+    $.ajax({
+    url: 'backend/maxPrestamos.php',
+    success: function(max)
+      {
+        maxPrestamo = $.parseJSON(max);
+        mostrarPrestamos(maxPrestamo);
+      }
+    });
+}
+
+function eliminarRegPrestamos(nomina){
+  var preguntaEliminar = confirm("Esta seguro que desea eliminar este regitro?\n AVISO : Si elimina el registro el activo fijo se eliminara tambien");
+if (preguntaEliminar == true) {
+      $.ajax({
+      url: 'backend/eliminarRegPrestamos.php?nomina='+nomina,
+      success: function(msg)
+        {
+         alert(msg);
+         areaPrestamos();
+        }
+        });
+
+
+}
+else {
+}
+
+}
+
+function mostrarPrestamos(maxPrestamo){
           $('#headTablaPrestamos').html('');
           $('#bodyTablaPrestamos').html('');
-        var i=0;
+
+        var n=0;
           $('#headTablaPrestamos').append(
             '<tr>'+
             '<th class="col-md-2 centrar">Nomina</th>'+
-            '<th class="col-md-2 centrar">Departamento</th>'+
+            '<th class="col-md-2 centrar">Drirector de Departamento</th>'+
             '<th class="col-md-2 centrar">Nombre</th>'+
             '<th class="col-md-2 centrar">Tipo de movimiento</th>'+
             '<th class="col-md-2 centrar">Numero de Activo</th>'+
-            '<th class="col-md-1 centrar">Drirector de Departamento</th>'+
+            '<th class="col-md-1 centrar">Departamento</th>'+
             '<th class="col-md-1 centrar">Modelo</th>'+
             '<th class="col-md-1 centrar">Marca</th>'+
             '<th class="col-md-1 centrar">Numero de serie</th>'+
+            '<th class="col-md-1 centrar">Eliminar</th>'+
             '</tr>'
           );
-          while (i<10) {
+          while (n <= maxPrestamo) {
             $.ajax({
-            url: 'backend/tablaUsuarios.php?i='+i,
+            url: 'backend/tablaPrestamos.php?i='+ n,
             success: function(arreglo)
               {
                 var prestamo = $.parseJSON(arreglo);
-                $('#bodyTablaUsuarios').append(
+                var nomina = prestamo[0];
+                $('#bodyTablaPrestamos').append(
                   '<tr>'+
                   '<td class="col-md-2 centrar">'+prestamo[0]+'</td>'+
                   '<td class="col-md-2 centrar">'+prestamo[1]+'</td>'+
@@ -177,10 +229,11 @@ function mostrarPrestamos(){
                   '<td class="col-md-2 centrar">'+prestamo[6]+'</td>'+
                   '<td class="col-md-2 centrar">'+prestamo[7]+'</td>'+
                   '<td class="col-md-2 centrar">'+prestamo[8]+'</td>'+
+                  "<td class='col-md-2 centrar'><button onclick = 'eliminarRegPrestamos("+nomina+");' class='btnIcono'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>"+
                   '</tr>');
               }
             });
-               i++;
+               n++;
           }
 
 
@@ -313,9 +366,10 @@ function cerrarPrestamos(){
  var opacidad = 1;
  var altura = 0;
  var margen =0;
- var id = setInterval(frame,30);
- function frame(){
+ var id = setInterval(frame2,50);
+ function frame2(){
  	if(altura == -50){
+  menu.style.display = "block";
   menu.style.marginTop = "0%";
  	elem2.style.display = "none";
  	elem2.style.marginTop = "0%";
@@ -324,14 +378,14 @@ function cerrarPrestamos(){
  	}
  	else
  	{
-    menu.style.display = "block";
  	opacidad = opacidad-0.014;
- 	altura = altura - 0.5;
+ 	altura = altura - 1;
  	elem2.style.marginTop = altura + "%";
  	elem2.style.opacity = opacidad ;
  	}
  }
 }
+
 var background = document.getElementById('background');
 position = 0;
 
