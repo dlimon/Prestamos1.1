@@ -55,10 +55,29 @@ if($departamento == "" || $nombreCompleto == "" || $nomina == "" || $DirectorDel
       if($_FILES['imageActivoFijo']['tmp_name']!="")
       {
       move_uploaded_file($_FILES['imageActivoFijo']["tmp_name"], "../pdf/Registros/".$nomina.".jpg");
-      $insert = "INSERT INTO `activo_fijo` (`Departamento`, `Nombre`, `Nomina`, `DirectorDepartemento`, `TipoMovimiento`, `NumeroActivo`, `Marca`, `Modelo`, `NumeroDeSerie`)
-       VALUES ('".$DirectorDelDepartamento."', '".$nombreCompleto."', '".$nomina."', '".$departamento."', '".$TipoMovimiento."', '".$nActivo."', '".$marca."', '".$modelo."', '".$numeroDeSerie."')";
-       $mysqli->query($insert);
-       echo "CARTA RESPONSIVA DE ACTIVO FIJO \n A nombre de : ".$nombreCompleto." \n Con numero de nomina : ".$nomina." \n capturado con exito! ";
+      //Se obtiene el maximo de id en la tabla existente
+      $consultaMax = "SELECT MAX(id) FROM `activo_fijo`";
+      $obtenerMax = $mysqli->query($consultaMax);
+      $max = mysqli_fetch_array($obtenerMax);
+      $idmax = $max[0];
+      //La fecha actual en que se hiso el pretamo
+      $fechaPrestamo = date("Y-m-d");
+      //si en la tabla existente no existe ningun registro este se asigna con el numero 0
+      if($idmax == NULL){
+        $idmax = 0;
+        $insert = "INSERT INTO `activo_fijo` (`Departamento`, `Nombre`, `Nomina`, `DirectorDepartemento`, `TipoMovimiento`, `NumeroActivo`, `Marca`, `Modelo`, `NumeroDeSerie`, `id`)
+         VALUES ('".$DirectorDelDepartamento."', '".$nombreCompleto."', '".$nomina."', '".$departamento."', '".$TipoMovimiento."', '".$nActivo."', '".$marca."', '".$modelo."', '".$numeroDeSerie."','".$fechaPrestamo."', '".$idmax."')";
+         $mysqli->query($insert);
+         echo "CARTA RESPONSIVA DE ACTIVO FIJO \n A nombre de : ".$nombreCompleto." \n Con numero de nomina : ".$nomina." \n capturado con exito! ";
+      }
+      else {
+        $idmax = $idmax + 1;
+        $insert = "INSERT INTO `activo_fijo` (`Departamento`, `Nombre`, `Nomina`, `DirectorDepartemento`, `TipoMovimiento`, `NumeroActivo`, `Marca`, `Modelo`, `NumeroDeSerie`, `id`)
+         VALUES ('".$DirectorDelDepartamento."', '".$nombreCompleto."', '".$nomina."', '".$departamento."', '".$TipoMovimiento."', '".$nActivo."', '".$marca."', '".$modelo."', '".$numeroDeSerie."','".$fechaPrestamo."', '".$idmax."')";
+         $mysqli->query($insert);
+         echo "CARTA RESPONSIVA DE ACTIVO FIJO \n A nombre de : ".$nombreCompleto." \n Con numero de nomina : ".$nomina." \n capturado con exito! ";
+      }
+
       }
       else {
         echo "!Aviso :se deve subir la carta de activo fijo";

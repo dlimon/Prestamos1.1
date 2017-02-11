@@ -14,11 +14,16 @@ unlink('../pdf/Registros/'.$nomina.'.jpg');
 $mysqli->query($delete);
 $newID = $id[0];
 $newID = $newID + 1;
-while ($newID <= $idmax) {
-  $reconstruir = "UPDATE `activo_fijo` SET `id` = '".$idActual."' WHERE `activo_fijo`.`id` = ".$newID;
-  $mysqli->query($reconstruir);
-  $idActual = $idActual + 1;
-  $newID = $newID + 1;
+if($idmax == NULL){
+
+}
+else {
+  while ($newID <= $idmax) {
+    $reconstruir = "UPDATE `activo_fijo` SET `id` = '".$idActual."' WHERE `activo_fijo`.`id` = ".$newID;
+    $mysqli->query($reconstruir);
+    $idActual = $idActual + 1;
+    $newID = $newID + 1;
+  }
 }
 mysqli_close($mysqli);
 echo "Activo con numero de nomina : ".$nomina."\n Fue eliminado con exito" ;

@@ -11,7 +11,7 @@
 <meta http-equiv='pragma' content='no-cache'>
 <script type="text/javascript" src="multiuploadPrestamos.js"></script>
 <script type="text/javascript" src="js/daterangepicker.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/myJavascript.js"></script>
 </head>
@@ -20,9 +20,21 @@
 <div >
  <div  class="col-xs-10 col-sm-6 col-md-6 col-lg-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-4">
  <div id='login'></div>
+ <div id='menu-color'></div>
  <div id='menu'>
-	 <h3 class="col-md-12">MENU</h3>
-	 <div>
+	 <h3 id="encabezadoMenu" class="col-md-12">MENU</h3>
+	 <div id="menuSistemas">
+		 <button id="cuerpoMenu" class="col-md-10 col-md-offset-1" type="button" name="button">Impresoras</button>
+		 <div id="menuImpresoras2" name="prueba">
+			<ul>
+				<li><a class="menuImpresorasColorBlanco" href="http://10.76.205.175" target="_blank">Servicios de apoyo</a></li>
+				<li><a class="menuImpresorasColorBlanco" href="http://10.76.205.174" target="_blank">Mercadotecnia</a></li>
+				<li><a class="menuImpresorasColorBlanco" href="http://10.76.202.46" target="_blank">Academico</a></li>
+				<li><a class="menuImpresorasColorBlanco" href="http://10.76.205.176" target="_blank">Sala de maestros</a></li>
+				<li><a class="menuImpresorasColorBlanco" href="http://10.76.202.85" target="_blank">Recursos Humanos</a></li>
+				<li><a class="menuImpresorasColorBlanco" href="http://10.76.205.170" target="_blank">Biblioteca</a></li>
+			</ul>
+		 </div>
 		 <button id="cuerpoMenu" onclick="abrirVentanaSistemas();" class="col-md-10 col-md-offset-1" type="button" name="button">Prestamos</button>
 		 <button id="cuerpoMenu" onclick="cerrarSesion();" class="col-md-10 col-md-offset-1" type="button" name="button">Cerrar sesión</button>
 	 </div>
@@ -52,8 +64,10 @@
 	<h4 class="col-md-2  navegadorAcomodo" onclick="cerrarPrestamos();">cerrar prestamos</h4></div>
 	<!--Area prestamos-->
 	<div id="areaPrestamos" class="container-fluid col-md-12" >
-		<h3>Tabla de prestamos</h3>
-		<div id="tablaUsurios" class="col-md-12">
+		<h4>Tabla de prestamos <button type="button" name="button" onclick="busquedaPrestamo();"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		<input id="buscarNominaPrestamo" type="text" name="" value=""> <button onclick="prestamos(); areaPrestamos();" type="button" name="button"><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></button></h4>
+
+		<div id="tablaPrestamos" class="col-md-12">
 			<table class=" table-bordered">
 			 <thead id="headTablaPrestamos">
 			 </thead>
@@ -128,7 +142,7 @@
 					<tr>
 						<td class="col-md-8"><label for="">DETALLES DEL ACTIVO FIJO</label></td>
 						<td  class="col-md-1"><label for="">N'Activo</label></td>
-						<td  class="col-md-3"><input  class="txtDetalles2" type="text" name="nActivo" value=""></td>
+						<td  class="col-md-3"><input  class="txtDetalles2" type="text" id="nActivo" name="nActivo" value=""></td>
 					</tr>
 					</tbody>
 					</table>

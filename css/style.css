@@ -1,3 +1,8 @@
+@font-face {
+    font-family: utmFont;
+    src: url(../fonts/conduit_itc_medium1.woff) format('woff');
+}
+
 body
 {
 	background-image: url('../images/background.jpg');
@@ -21,6 +26,73 @@ background-repeat: repeat-x;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-delay: 0s;
+}
+
+#menu{
+	font-family: utmFont;
+	color: white;
+}
+
+#cuerpoMenu:hover + #menuImpresoras2{
+		display: block;
+		margin-bottom: 2%;
+		padding-top: 12%;
+}
+
+#menuImpresoras2:hover {
+	display: block;
+	margin-bottom: 2%;
+	padding-top: 12%;
+}
+
+a{
+	color: black ;
+}
+
+ul{
+	list-style: none;
+}
+
+#encabezadoMenu{
+	color: white;
+}
+
+#menuImpresoras2{
+	color: white ;
+	text-align: center;
+ padding-right: 8%;
+	display: none;
+
+}
+
+.menuImpresorasColorBlanco{
+color: white;
+font-size: 18px;
+}
+
+.menuImpresorasColorBlanco:hover{
+	color: white;
+}
+
+
+#ImpresoraServiciosDeApoyo{
+	padding-right: 0px;
+padding-left: 0px;
+	top: 19%;
+position: absolute;
+height: 60%;
+border-radius: 6px;
+	background-color: white;
+	z-index: 2;
+	animation-duration: 3s;
+		animation-name: ventanaSistemas;
+		display: block;
+		border: black;
+border-style: double;
+}
+
+#areaPrestamos{
+	height: 84%;
 }
 
 #lblMarca{
@@ -138,6 +210,11 @@ position: fixed;
 	overflow: auto;
 }
 
+#tablaPrestamos{
+	overflow: auto;
+	height: 84%;
+}
+
 .centrar{
 	text-align: center;
 }
@@ -167,7 +244,7 @@ padding-right: 3%;*/
 }
 
 #colorNavegador{
-	background-color: #8bff8b;
+	background-color: #03D01D;
 }
 
 #background{
@@ -176,12 +253,27 @@ padding-right: 3%;*/
 }
 
 @media screen and (max-width: 768px) {
-	#menu{
+	#menu-color{
 		display: none;
 text-align: center;
 opacity: 0.7;
 color: black;
-background-color: #66ff66;
+background-color: #03D01D;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+	height: 100%;
+width: 75.8%;
+margin-left: 0%;
+	}
+	#menu{
+		display: none;
+text-align: center;
+/*opacity: 0.7;*/
+color: black;
+/*background-color: #03D01D;*/
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -196,7 +288,7 @@ margin-left: 0%;
 text-align: center;
 opacity: 0.7;
 color: black;
-background-color: #66ff66;
+background-color: #03D01D;
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -223,13 +315,28 @@ margin-left: 0%;
 }
 
 @media screen and (min-width: 769px) {
+#menu-color{
+	display: none;
+text-align: center;
+opacity: 0.7;
+color: black;
+background-color: #03D01D;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+height: 100%;
+width: 44.6%;
+margin-left: 0%;
+}
 
 	#menu{
 		display: none;
 text-align: center;
-opacity: 0.7;
+/*opacity: 0.7;*/
 color: black;
-background-color: #66ff66;
+/*background-color: #03D01D;*/
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -244,7 +351,7 @@ margin-left: 0%;
 text-align: center;
 opacity: 0.7;
 color: black;
-background-color: #66ff66;
+background-color: #03D01D;
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -272,12 +379,28 @@ margin-left: 0%;
 
 @media screen and (min-width: 970px) {
 
-	#menu{
-		display: none;
+#menu-color{
+	display: none;
 text-align: center;
 opacity: 0.7;
 color: black;
-background-color: #66ff66;
+background-color: #03D01D;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+height: 100%;
+width:  44.3%;
+margin-left: 0%;
+}
+
+	#menu{
+		display: none;
+text-align: center;
+/*opacity: 0.7;*/
+color: black;
+/*background-color: #03D01D;*/
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -320,12 +443,28 @@ margin-left: 0%;
 
 @media screen and (min-width: 1170px) {
 
-	#menu{
-		display: none;
+#menu-color{
+display: none;
 text-align: center;
 opacity: 0.7;
 color: black;
-background-color: #66ff66;
+background-color: #03D01D;
+position: fixed;
+z-index: -1;
+animation-duration: 3s;
+animation-name: pintarMenu;
+padding-top: 15%;
+height: 100%;
+width: 30.7%;
+margin-left: 0%;
+}
+
+	#menu{
+		display: none;
+text-align: center;
+/*opacity: 0.7;*/
+color: black;
+/*background-color: #03D01D;*/
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -340,7 +479,7 @@ margin-left: 0%;
 text-align: center;
 opacity: 0.7;
 color: black;
-background-color: #66ff66;
+background-color: #03D01D;
 position: fixed;
 z-index: -1;
 animation-duration: 3s;
@@ -368,7 +507,8 @@ margin-left: 0%;
 
 #cuerpoMenu
 {
-	background: white;
+	background: #fff0;
+	color: white;
 	border-bottom: black;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
@@ -383,6 +523,8 @@ margin-left: 0%;
 	border-right-width: 1px;
 	border-right-color: black;
 	font-size: 23px;
+	margin-bottom: 4%;
+	border-style: none;
 }
 
 @keyframes pintarMenu{
